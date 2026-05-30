@@ -344,7 +344,10 @@ Construção incremental. Cada fatia mantém o sistema verde (`mvn test` passa).
 
 ### Pendências em aberto
 
-- **UML** — diagrama de caso de uso e diagrama de classes pendentes. Pedro vai produzir/passar; revisar contra este PRD antes da Etapa 2.
+- **UML** — diagrama de caso de uso e de classes pendentes. Produção é do Claude
+  (ver `COLABORACAO.md §2`): caso de uso e doc da Etapa 3 ele rascunha sozinho; o de
+  classes no modo (b) — ele rascunha do §4, Pedro corrige e aprende. Revisar contra
+  este PRD antes da Etapa 2.
 - **Confirmar com o professor:** a interpretação "cadastros previamente inseridos = seed no `main`, sem UI de cadastro" precisa ser validada para evitar surpresa na apresentação.
 
 ### Conceitos formais nomeados (referências)
