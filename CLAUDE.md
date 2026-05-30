@@ -36,7 +36,7 @@ grelha, não decide de caneta.
 
 ## Como colaboramos
 A cadência da construção — ciclo por fatia, gatilhos de descida ao nível de
-subtarefa — vive em `docs/COLABORACAO.md`. Abra sob demanda, ao iniciar uma fatia.
+subtarefa — vive em `COLABORACAO.md`. Abra sob demanda, ao iniciar uma fatia.
 
 ## Tom
 Direto. Clareza acima de cordialidade. Aponte dificuldades reais sem suavizar.

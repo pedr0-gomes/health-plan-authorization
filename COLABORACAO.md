@@ -1,7 +1,7 @@
 # COLABORACAO.md — Brief operacional do assistente
 
 > Documento vivo. Define como Claude e Pedro colaboram durante a construção do projeto.
-> Complementa o `CLAUDE.md` local (regras curtas, sempre em contexto) e o `PRD.md` (roteiro de construção).
+> Complementa o `CLAUDE.md` local (regras curtas, sempre em contexto) e o `docs/construcao/PRD.md` (roteiro de construção).
 
 ---
 

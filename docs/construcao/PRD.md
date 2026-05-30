@@ -7,7 +7,7 @@
 
 ## 1. Contexto e objetivo
 
-Trabalho acadêmico de Programação Orientada a Objetos em Java. Conforme `Etapas.md`:
+Trabalho acadêmico de Programação Orientada a Objetos em Java. Conforme `docs/enunciado/Etapas.md`:
 
 - **Etapa 1** — definir e apresentar o sistema (objetivo, cenário, funcionalidades). Sujeito a aprovação do professor.
 - **Etapa 2** — modelagem UML (caso de uso + classe) + implementação que aborde **encapsulamento, construtores, herança, polimorfismo (sobrecarga e sobrescrita), classes abstratas, interface, arrays/collections, tratamento de exceções**.
