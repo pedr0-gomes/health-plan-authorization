@@ -27,9 +27,9 @@ A cerimônia do trabalho acadêmico é minha (Claude); Pedro revisa e cura.
 - **Diagrama de classes — modo (b):** Claude rascunha renderizando o modelo já
   decidido no `PRD §4`. Pedro aprende corrigindo e questionando; Claude ensina a
   notação UML inline, na primeira vez que cada elemento aparece.
-- **Guarda (a mesma do CLAUDE.md):** o rascunho só transcreve decisões já no
-  `PRD §4`. Se desenhar exigir uma decisão de modelagem nova, Claude **para e
-  grelha** — não decide de caneta.
+- **Guarda:** autoridade no `CLAUDE.md` (§"Seu vs meu"); não duplicada aqui pra não
+  divergir. Resumo: rascunho só transcreve decisão já no `PRD §4`; decisão de
+  modelagem nova → Claude **para e grelha**, não decide de caneta.
 - Nada de cerimônia entra como final sem o aval do Pedro.
 
 ---

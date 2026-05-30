@@ -31,7 +31,7 @@ porque o tooling (`destilar-projeto`, `improve-codebase-architecture`) lê `CLAU
 
 | Natureza | Arquivo | Bloco / papel |
 |---|---|---|
-| Enunciado (entra de fora) | `docs/enunciado/Etapas.md` | input externo — o problema dado pelo professor |
+| Enunciado (entra de fora) | `docs/enunciado/Etapas.md` | input *ideia/problema* da **Construir**, vindo de fora (ver §Interfaces externas) |
 | Artefato de bloco | `docs/pesquisa/pesquisa-dominio.md` | saída do **Investigar** (Research) |
 | Artefato de bloco | `docs/construcao/PRD.md` (+ §8) | borda da **Construir** (PRD + Kanban em fatias) |
 | Config de colaboração | `CLAUDE.md`, `COLABORACAO.md` | governança (o "como", não um bloco) |
@@ -53,14 +53,21 @@ ser aprovada.
 ## Interfaces externas (onde o método não chega)
 
 O método (`~/.claude/CONTEXT.md`) modela o loop interno de construção do Pedro. Um
-trabalho acadêmico acrescenta duas interfaces que os cinco blocos não nomeiam:
+trabalho acadêmico encosta nele em dois pontos — só **um** é buraco real:
 
-- **Enunciado que entra** — `docs/enunciado/Etapas.md`. Restrição externa, a montante.
-- **Entregável que sai** — `docs/entrega/` (Etapa 1 feita; Etapa 2 = UML + código;
-  Etapa 3 = documentação completa). O Expor não cobre isso (é pra blog/narrativa
-  pública, não pra formulário acadêmico).
+- **O problema que entra já tem nome.** O `docs/enunciado/Etapas.md` é o input
+  *ideia/problema* da **Construir** (contrato da Construir no método), só vindo de
+  fora em vez de partir do Pedro. Não é interface nova.
+- **A avaliação que constrange e sai é o buraco real.** O `Etapas.md` não é só o
+  problema inicial — é uma *rubric persistente* (a `COLABORACAO.md §1` a usa pra
+  decidir quando descer ao nível de subtarefa), e `docs/entrega/` é um **entregável
+  avaliado** que sai pro professor (Etapa 1 feita; Etapa 2 = UML + código; Etapa 3 =
+  documentação). As saídas do método são "código validado" ou "post público" —
+  nenhuma cobre uma rubric externa nem um entregável de nota. O Expor não serve (é
+  blog/narrativa pública, não avaliação).
 
-Registrado como rachadura conhecida: se reaparecer em outro projeto acadêmico, vira
+Registrado como rachadura conhecida: se a **interface de avaliação** (rubric que
+constrange + entregável de nota) reaparecer em outro projeto acadêmico, vira
 candidato a categoria nova no método.
 
 ## Decisões em curso / pendências
@@ -71,7 +78,9 @@ candidato a categoria nova no método.
 - **Skill `to-prd` desatualizada** — ela ainda escreve o PRD na raiz; aqui o PRD vive
   em `docs/construcao/`. Corrigir é trabalho transversal (sistema global), não deste
   projeto.
-- **Home canônico de Research** — o método prevê `.claude/research/<slug>.md` para
-  pesquisa consolidada pela skill `consolidar-pesquisa`. O `pesquisa-dominio.md` atual
-  foi feito à mão; se rodarmos a skill, a saída dela vai pra lá.
+- **Home canônico de Research = `docs/pesquisa/`** *(decidido 2026-05-30)*. Este
+  projeto versiona todo artefato no repo, por natureza; a pesquisa fica junto do PRD,
+  não em `.claude/research/`. A skill `consolidar-pesquisa` tem `.claude/research/<slug>.md`
+  hardcoded — **mesma classe de fix transversal da `to-prd`** (skill assume caminho de
+  raiz; o projeto sobrescreve o destino). Resolver no sistema global, não aqui.
 - **`docs/adr/`** — convenção de ADR por-projeto prevista no método; ainda não usada.
