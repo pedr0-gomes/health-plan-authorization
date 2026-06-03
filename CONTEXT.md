@@ -1,6 +1,6 @@
 # CONTEXT.md — mapa do projeto
 
-Última atualização: 2026-05-30
+Última atualização: 2026-06-03
 
 ## O que é este projeto
 
@@ -43,12 +43,20 @@ porque o tooling (`destilar-projeto`, `improve-codebase-architecture`) lê `CLAU
 Idea ✓ → Research ✓ → (Prototype: pulado) → PRD ✓ → Kanban ✓ (PRD §8) → Implementation ⬜ → QA ⬜
 ```
 
-**Próximo bloco: Implementation** — a **Fatia 0** do `PRD §8` (scaffold Maven:
-`pom.xml`, árvore de diretórios, JUnit 5). Execução: Claude. Da Fatia 1 em diante o
-código é do Pedro (ver `COLABORACAO.md`).
+**Próximo passo: os diagramas UML da Etapa 2.** UML já aprendido (fora desta esteira,
+pelo bloco **Aprender**). Faltam dois artefatos, ambos andaime do Claude (ver `CLAUDE.md`):
 
-**Bloqueado pelo gate da Etapa 1** (ver abaixo): não iniciar a Fatia 0 até a proposta
-ser aprovada.
+- **Diagrama de caso de uso** — Claude desenha (documento do trabalho).
+- **Diagrama de classes** — Claude rascunha em **modo (b)**: renderiza o modelo já
+  fechado no `PRD §4`, Pedro corrige e aprende; decisão de modelagem nova → Claude
+  para e grelha, não decide de caneta.
+
+Só **depois** dos diagramas vem a **Implementation** — a **Fatia 0** do `PRD §8`
+(scaffold Maven: `pom.xml`, árvore, JUnit 5). Da Fatia 1 em diante o código é do Pedro
+(ver `COLABORACAO.md`).
+
+**Gate da Etapa 1** *(aprovado 2026-06-03)*: a proposta foi aprovada pelo professor —
+a Etapa 2 está liberada. Pode desenhar os diagramas e, depois, iniciar a Fatia 0.
 
 ## Interfaces externas (onde o método não chega)
 
@@ -72,9 +80,10 @@ candidato a categoria nova no método.
 
 ## Decisões em curso / pendências
 
-- **Gate da Etapa 1** — *(decidido 2026-05-30: **esperar aprovação**)*. A Etapa 2
-  (modelagem + código), e portanto a Fatia 0, só começam depois que o professor
-  aprovar `docs/entrega/Etapa1-Proposta.md`.
+- **Gate da Etapa 1** — ✅ *aprovado 2026-06-03*. A proposta
+  `docs/entrega/Etapa1-Proposta.md` foi aprovada pelo professor; a Etapa 2 (modelagem +
+  código) está liberada. *(decisão original 2026-05-30: esperar aprovação antes de
+  iniciar a Etapa 2.)*
 - **Skill `to-prd` desatualizada** — ela ainda escreve o PRD na raiz; aqui o PRD vive
   em `docs/construcao/`. Corrigir é trabalho transversal (sistema global), não deste
   projeto.
