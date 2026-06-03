@@ -20,12 +20,18 @@ docs/
 ├── enunciado/    Etapas.md                         (entra de fora)
 ├── pesquisa/     pesquisa-dominio.md               (Research / Investigar)
 ├── construcao/   PRD.md                            (Construir: PRD + Kanban §8)
-└── entrega/      Etapa1-Proposta.md + .excalidraw  (sai pro professor)
+└── entrega/      Etapa1 (.md + .excalidraw) · caso-de-uso.excalidraw  (sai pro professor)
 ```
 
 A pasta agrupa por **natureza do artefato**, não por etapa. Governança fica na raiz
 porque o tooling (`destilar-projeto`, `improve-codebase-architecture`) lê `CLAUDE.md`,
 `CONTEXT.md` e companhia lá.
+
+**Fluxo criação → entrega** *(convenção, 2026-06-03)*: `construcao/` é a bancada —
+todo artefato nasce e é rascunhado ali. Ao concluir, migra para o local definitivo pela
+sua natureza (tipicamente `entrega/`, o que sai pro professor). Foi assim com o
+caso-de-uso: rascunhado em `construcao/`, movido para `entrega/caso-de-uso.excalidraw`
+ao fechar.
 
 ## Mapa de artefatos → blocos
 
@@ -43,10 +49,11 @@ porque o tooling (`destilar-projeto`, `improve-codebase-architecture`) lê `CLAU
 Idea ✓ → Research ✓ → (Prototype: pulado) → PRD ✓ → Kanban ✓ (PRD §8) → Implementation ⬜ → QA ⬜
 ```
 
-**Próximo passo: os diagramas UML da Etapa 2.** UML já aprendido (fora desta esteira,
-pelo bloco **Aprender**). Faltam dois artefatos, ambos andaime do Claude (ver `CLAUDE.md`):
+**Próximo passo: o diagrama de classes da Etapa 2.** UML já aprendido (fora desta
+esteira, pelo bloco **Aprender**). Falta um artefato (ver `CLAUDE.md`):
 
-- **Diagrama de caso de uso** — Claude desenha (documento do trabalho).
+- **Diagrama de caso de uso** — ✅ concluído 2026-06-03 (Pedro desenhou, Claude
+  socrático ensinando a notação). `docs/entrega/caso-de-uso.excalidraw`.
 - **Diagrama de classes** — Claude rascunha em **modo (b)**: renderiza o modelo já
   fechado no `PRD §4`, Pedro corrige e aprende; decisão de modelagem nova → Claude
   para e grelha, não decide de caneta.
