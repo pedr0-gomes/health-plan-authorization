@@ -17,7 +17,7 @@ Trabalho acadêmico de Programação Orientada a Objetos em Java. Conforme `docs
 
 **Objetivo de aprendizado (Pedro):** exercitar modelagem OO num domínio com regras reais e variação comportamental honesta, construindo o sistema do zero — sem que o assistente escreva código de modelagem ou lógica de negócio.
 
-**Critério de sucesso do projeto:** ao fim, o sistema cumpre o rubric da Etapa 2 (todos os conceitos OO aparecem em lugares naturais), tem cobertura de testes para as regras de domínio, e é demonstrável via CLI com cadastros pré-inseridos.
+**Critério de sucesso do projetont:** ao fim, o sistema cumpre o rubric da Etapa 2 (todos os conceitos OO aparecem em lugares naturais), tem cobertura de testes para as regras de domínio, e é demonstrável via CLI com cadastros pré-inseridos.
 
 ---
 
@@ -66,8 +66,8 @@ Cada eixo foi escolhido porque carrega naturalmente um conceito OO obrigatório 
 
 ### 4.2. Entidades principais
 
-- **Beneficiario** — `nome`, `dataAdesao`, `plano`. Associação 1→1 com Plano por composição direta. Operação `autorizar` recebe o Beneficiário e o plano vem por dentro (`getPlano()`).
-- **Plano** — `nome`, `segmentacao`, três prazos de carência (`int`), `politicaCopart`. Expõe `cobre(p)`, `carenciaCumprida(...)`, `calcularCopart(p)` — delega às colaboradoras (Segmentação e Política).
+- **Beneficiario** — `nome`, `dataAdesao`, `plano`. Associação `*→1` com Plano por agregação (um mesmo plano é compartilhado por muitos beneficiários; o plano é criado fora do beneficiário). Operação `autorizar` recebe o Beneficiário e o plano vem por dentro (`getPlano()`).
+- **Plano** — `nome`, `segmentacao`, três prazos de carência (`int`), `politicaCopart`. Expõe `cobre(p)`, `carenciaCumprida(...)`, `calcularCopart(p)` — delega às colaboradoras (Segmentação e Política). Agrega `Segmentacao` e `PoliticaCoparticipacao` (`*→1` em ambas, agregação): as colaboradoras são criadas fora e passadas prontas ao construtor, podendo ser compartilhadas entre planos.
 - **Procedimento** — `codigo`, `descricao`, `tipo` (TipoProcedimento), `requerAutorizacaoPrevia`, `valorBase`. Validações no construtor.
 - **TipoProcedimento** (enum) — `CONSULTA, EXAME, CIRURGIA, INTERNACAO, PARTO`.
 - **ContextoAtendimento** — `dataEvento`, `urgenciaEmergencia`, `autorizacaoPreviaConcedida`. Agrupa parâmetros do atendimento concreto (em oposição a dados estruturais do Beneficiário/Procedimento). Tem **construtores sobrecarregados** para os casos comuns.
@@ -286,7 +286,7 @@ Construção incremental. Cada fatia mantém o sistema verde (`mvn test` passa).
 | 4.3 | `CoparticipacaoPercentual` (campo `percentual`) | interface + estado próprio |
 | 4.4 | `CoparticipacaoFixaPorTipo` (campo `Map<...>`) | interface + Map |
 | 4.5 | `Procedimento` ganha `valorBase` | extensão |
-| 4.6 | `Plano` ganha `politicaCopart` e `calcularCopart(p)` | composição + delegação |
+| 4.6 | `Plano` ganha `politicaCopart` e `calcularCopart(p)` | agregação + delegação |
 | 4.7 | Testes unitários por política | polimorfismo verificável |
 | 4.8 | `ResultadoAutorizacao` ganha `valorCoparticipacao` + **construtores sobrecarregados** | sobrecarga |
 | 4.9 | `ServicoAutorizacao` calcula copart quando autoriza | fluxo completo |

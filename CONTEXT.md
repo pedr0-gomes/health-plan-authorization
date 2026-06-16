@@ -1,6 +1,6 @@
 # CONTEXT.md — mapa do projeto
 
-Última atualização: 2026-06-03
+Última atualização: 2026-06-16
 
 ## O que é este projeto
 
@@ -20,7 +20,7 @@ docs/
 ├── enunciado/    Etapas.md                         (entra de fora)
 ├── pesquisa/     pesquisa-dominio.md               (Research / Investigar)
 ├── construcao/   PRD.md                            (Construir: PRD + Kanban §8)
-└── entrega/      Etapa1 (.md + .excalidraw) · caso-de-uso.excalidraw  (sai pro professor)
+└── entrega/      Etapa1 (.md + .excalidraw) · caso-de-uso · diagrama-de-classes  (sai pro professor)
 ```
 
 A pasta agrupa por **natureza do artefato**, não por etapa. Governança fica na raiz
@@ -49,21 +49,19 @@ ao fechar.
 Idea ✓ → Research ✓ → (Prototype: pulado) → PRD ✓ → Kanban ✓ (PRD §8) → Implementation ⬜ → QA ⬜
 ```
 
-**Próximo passo: o diagrama de classes da Etapa 2.** UML já aprendido (fora desta
-esteira, pelo bloco **Aprender**). Falta um artefato (ver `CLAUDE.md`):
+**Próximo passo: a Implementation — Fatia 0 do `PRD §8`** (scaffold Maven: `pom.xml`,
+árvore, JUnit 5). Da Fatia 1 em diante o código é do Pedro (ver `COLABORACAO.md`).
+
+A modelagem UML da Etapa 2 está **completa** (ambos os diagramas em `docs/entrega/`):
 
 - **Diagrama de caso de uso** — ✅ concluído 2026-06-03 (Pedro desenhou, Claude
   socrático ensinando a notação). `docs/entrega/caso-de-uso.excalidraw`.
-- **Diagrama de classes** — Claude rascunha em **modo (b)**: renderiza o modelo já
-  fechado no `PRD §4`, Pedro corrige e aprende; decisão de modelagem nova → Claude
-  para e grelha, não decide de caneta.
-
-Só **depois** dos diagramas vem a **Implementation** — a **Fatia 0** do `PRD §8`
-(scaffold Maven: `pom.xml`, árvore, JUnit 5). Da Fatia 1 em diante o código é do Pedro
-(ver `COLABORACAO.md`).
+- **Diagrama de classes** — ✅ concluído 2026-06-16 (modo (b): Claude rascunhou
+  renderizando o `PRD §4`, Pedro corrigiu e fechou as 3 decisões de agregação/enum).
+  `docs/entrega/diagrama-de-classes.excalidraw`.
 
 **Gate da Etapa 1** *(aprovado 2026-06-03)*: a proposta foi aprovada pelo professor —
-a Etapa 2 está liberada. Pode desenhar os diagramas e, depois, iniciar a Fatia 0.
+a Etapa 2 está liberada. Diagramas UML concluídos; próximo é a Fatia 0.
 
 ## Interfaces externas (onde o método não chega)
 
