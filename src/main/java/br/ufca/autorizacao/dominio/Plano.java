@@ -12,4 +12,13 @@ public class Plano {
         this.carenciaParto = carenciaParto;
         this.carenciaDemais = carenciaDemais;
     }
+
+    public boolean carenciaCumprida(TipoProcedimento tipo,int dias) {
+        int prazo = switch(tipo) {
+        case PARTO->carenciaParto;
+        default->carenciaDemais;
+        };
+
+        return dias >= prazo;
+    }
 }
