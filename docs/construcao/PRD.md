@@ -17,7 +17,7 @@ Trabalho acadêmico de Programação Orientada a Objetos em Java. Conforme `docs
 
 **Objetivo de aprendizado (Pedro):** exercitar modelagem OO num domínio com regras reais e variação comportamental honesta, construindo o sistema do zero — sem que o assistente escreva código de modelagem ou lógica de negócio.
 
-**Critério de sucesso do projetont:** ao fim, o sistema cumpre o rubric da Etapa 2 (todos os conceitos OO aparecem em lugares naturais), tem cobertura de testes para as regras de domínio, e é demonstrável via CLI com cadastros pré-inseridos.
+**Critério de sucesso do projeto:** ao fim, o sistema cumpre o rubric da Etapa 2 (todos os conceitos OO aparecem em lugares naturais), tem cobertura de testes para as regras de domínio, e é demonstrável via CLI com cadastros pré-inseridos.
 
 ---
 
