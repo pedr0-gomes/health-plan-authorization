@@ -1,6 +1,8 @@
 package br.ufca.autorizacao.dominio;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
 
 public class Beneficiario {
     private final String nome;
@@ -15,5 +17,9 @@ public class Beneficiario {
 
     public Plano getPlano() {
         return this.plano;
+    }
+
+    public int diasDecorridos(LocalDate dataEvento) {
+        return (int) ChronoUnit.DAYS.between(this.dataAdesao, dataEvento);
     }
 }

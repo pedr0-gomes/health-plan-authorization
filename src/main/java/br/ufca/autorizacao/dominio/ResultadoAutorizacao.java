@@ -4,7 +4,7 @@ public class ResultadoAutorizacao {
     private final Decisao decisao; 
     private final String motivo;
 
-    ResultadoAutorizacao(Decisao decisao,String motivo) {
+    public ResultadoAutorizacao(Decisao decisao,String motivo) {
         this.decisao = decisao;
         this.motivo = motivo;
     }

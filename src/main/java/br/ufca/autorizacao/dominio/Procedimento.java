@@ -10,4 +10,8 @@ public class Procedimento {
         this.descricao = descricao;
         this.tipo = tipo;
     }
+
+    public TipoProcedimento getTipo() {
+        return this.tipo;
+    }
 }
