@@ -8,4 +8,8 @@ public class ResultadoAutorizacao {
         this.decisao = decisao;
         this.motivo = motivo;
     }
+
+    public Decisao getDecisao() {
+        return this.decisao;
+    }
 }

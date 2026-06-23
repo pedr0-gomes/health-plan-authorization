@@ -1,0 +1,46 @@
+package br.ufca.autorizacao.servico;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+
+import br.ufca.autorizacao.dominio.Beneficiario;
+import br.ufca.autorizacao.dominio.ContextoAtendimento;
+import br.ufca.autorizacao.dominio.Decisao;
+import br.ufca.autorizacao.dominio.Plano;
+import br.ufca.autorizacao.dominio.Procedimento;
+import br.ufca.autorizacao.dominio.ResultadoAutorizacao;
+import br.ufca.autorizacao.dominio.TipoProcedimento;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.time.LocalDate;
+
+class ServicoAutorizacaoTest {
+
+    @Test
+    void ServicoCarenciaAutorizado() {
+        Plano plano = new Plano("Unimed", 300,  180);
+        Beneficiario beneficiario = new Beneficiario("Pedro",LocalDate.of(2024,1,1),plano);
+        Procedimento procedimento = new Procedimento("626-623","Algumacoisatomia I",TipoProcedimento.CIRURGIA);
+        ContextoAtendimento contextoAtendimento = new ContextoAtendimento(LocalDate.of(2024,8,1), false);
+
+        ServicoAutorizacao servico = new ServicoAutorizacao();
+        ResultadoAutorizacao resultado = servico.autorizar(beneficiario, procedimento, contextoAtendimento);
+
+        assertEquals(Decisao.AUTORIZADO,resultado.getDecisao());
+    }
+
+    @Test
+    void ServicoCarenciaNegado() {
+        Plano plano = new Plano("Unimed", 300,  180);
+        Beneficiario beneficiario = new Beneficiario("Maria",LocalDate.of(2024,1,1),plano);
+        Procedimento procedimento = new Procedimento("622","Algumacoisatomia II",TipoProcedimento.CIRURGIA);
+        ContextoAtendimento contextoAtendimento = new ContextoAtendimento(LocalDate.of(2024,2,1), false);
+
+        ServicoAutorizacao servico = new ServicoAutorizacao();
+        ResultadoAutorizacao resultado = servico.autorizar(beneficiario, procedimento, contextoAtendimento);
+
+        assertEquals(Decisao.NEGADO_CARENCIA,resultado.getDecisao());
+    }
+
+}
