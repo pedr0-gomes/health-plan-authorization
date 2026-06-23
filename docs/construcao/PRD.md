@@ -78,7 +78,7 @@ Cada eixo foi escolhido porque carrega naturalmente um conceito OO obrigatório 
 
 ```
 abstract class Segmentacao
-  - nome, descricao (protected, no construtor protegido)
+  - nome, descricao (private final; atribuídos pelo construtor protegido)
   - abstract cobre(Procedimento): boolean
 
   ├── Ambulatorial                        cobre se tipo ∈ {CONSULTA, EXAME}

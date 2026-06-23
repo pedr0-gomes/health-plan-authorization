@@ -2,11 +2,13 @@ package br.ufca.autorizacao.dominio;
 
 public class Plano {
     private String nome;
+     private final Segmentacao segmentacao;
     private final int carenciaParto;
     private final int carenciaDemais;
 
-    public Plano(String nome,int carenciaParto,int carenciaDemais) {
+    public Plano(String nome,Segmentacao segmentacao,int carenciaParto,int carenciaDemais) {
         this.nome = nome;
+        this.segmentacao = segmentacao;
         this.carenciaParto = carenciaParto;
         this.carenciaDemais = carenciaDemais;
     }
@@ -20,5 +22,9 @@ public class Plano {
         };
 
         return dias >= prazo;
+    }
+
+    public boolean cobre(Procedimento p) {
+        return segmentacao.cobre(p);
     }
 }

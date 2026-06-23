@@ -11,6 +11,10 @@ public class ServicoAutorizacao {
     public ResultadoAutorizacao autorizar(Beneficiario beneficiario, Procedimento procedimento, ContextoAtendimento contextoAtendimento) {
         TipoProcedimento tipo = procedimento.getTipo();
         boolean urgencia = contextoAtendimento.isUrgencia();
+        if (!beneficiario.getPlano().cobre(procedimento)) {
+            ResultadoAutorizacao resultado = new ResultadoAutorizacao(Decisao.NEGADO_COBERTURA,"Plano não cobre");
+            return resultado;
+        }
         int dias = beneficiario.diasDecorridos(contextoAtendimento.getDataEvento()); 
         boolean resposta = beneficiario.getPlano().carenciaCumprida(tipo,dias,urgencia);
         if (resposta) {
