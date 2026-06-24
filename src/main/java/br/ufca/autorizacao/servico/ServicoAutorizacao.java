@@ -3,6 +3,7 @@ package br.ufca.autorizacao.servico;
 import br.ufca.autorizacao.dominio.Beneficiario;
 import br.ufca.autorizacao.dominio.ContextoAtendimento;
 import br.ufca.autorizacao.dominio.Decisao;
+import br.ufca.autorizacao.dominio.Plano;
 import br.ufca.autorizacao.dominio.Procedimento;
 import br.ufca.autorizacao.dominio.ResultadoAutorizacao;
 import br.ufca.autorizacao.dominio.TipoProcedimento;
@@ -27,7 +28,7 @@ public class ServicoAutorizacao {
             ResultadoAutorizacao resultado = new ResultadoAutorizacao(Decisao.NEGADO_AUTORIZACAO_PREVIA,"Autorização prévia não concedida");
             return resultado;
         }
-        ResultadoAutorizacao resultado = new ResultadoAutorizacao(Decisao.AUTORIZADO,"Autorizado");
+        ResultadoAutorizacao resultado = new ResultadoAutorizacao(Decisao.AUTORIZADO,"Autorizado",beneficiario.getPlano().calcularCopart(procedimento));
         return resultado;
     }
 }   
