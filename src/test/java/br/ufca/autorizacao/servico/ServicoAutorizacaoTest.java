@@ -1,7 +1,6 @@
 package br.ufca.autorizacao.servico;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
 
 import br.ufca.autorizacao.dominio.Beneficiario;
 import br.ufca.autorizacao.dominio.ContextoAtendimento;
@@ -23,7 +22,7 @@ class ServicoAutorizacaoTest {
     void ServicoCarenciaAutorizado() {
         Plano plano = new Plano("Unimed", new HospitalarComObstetricia("HCO", "Cobre tudo"), 300, 180);
         Beneficiario beneficiario = new Beneficiario("Pedro",LocalDate.of(2024,1,1),plano);
-        Procedimento procedimento = new Procedimento("626-623","Algumacoisatomia I",TipoProcedimento.CIRURGIA);
+        Procedimento procedimento = new Procedimento("626-623","Algumacoisatomia I",TipoProcedimento.CIRURGIA, false);
         ContextoAtendimento contextoAtendimento = new ContextoAtendimento(LocalDate.of(2024,8,1), false);
 
         ServicoAutorizacao servico = new ServicoAutorizacao();
@@ -36,7 +35,7 @@ class ServicoAutorizacaoTest {
     void ServicoCarenciaNegado() {
         Plano plano = new Plano("Unimed", new HospitalarComObstetricia("HCO", "Cobre tudo"), 300, 180);
         Beneficiario beneficiario = new Beneficiario("Maria",LocalDate.of(2024,1,1),plano);
-        Procedimento procedimento = new Procedimento("622","Algumacoisatomia II",TipoProcedimento.CIRURGIA);
+        Procedimento procedimento = new Procedimento("622","Algumacoisatomia II",TipoProcedimento.CIRURGIA, false);
         ContextoAtendimento contextoAtendimento = new ContextoAtendimento(LocalDate.of(2024,2,1), false);
 
         ServicoAutorizacao servico = new ServicoAutorizacao();
@@ -52,13 +51,39 @@ class ServicoAutorizacaoTest {
         // se a cobertura não cortasse, sairia AUTORIZADO. Como sai NEGADO_COBERTURA, foi a cobertura.
         Plano plano = new Plano("Unimed", new Ambulatorial("Amb", "Ambulatorial"), 300, 180);
         Beneficiario beneficiario = new Beneficiario("Joao",LocalDate.of(2024,1,1),plano);
-        Procedimento procedimento = new Procedimento("999","Cirurgia qualquer",TipoProcedimento.CIRURGIA);
+        Procedimento procedimento = new Procedimento("999","Cirurgia qualquer",TipoProcedimento.CIRURGIA, false);
         ContextoAtendimento contextoAtendimento = new ContextoAtendimento(LocalDate.of(2024,8,1), false);
 
         ServicoAutorizacao servico = new ServicoAutorizacao();
         ResultadoAutorizacao resultado = servico.autorizar(beneficiario, procedimento, contextoAtendimento);
 
         assertEquals(Decisao.NEGADO_COBERTURA,resultado.getDecisao());
+    }
+
+    @Test
+    void ServicoAutorizacaoNegada() {
+        Plano plano = new Plano("Unimed", new Ambulatorial("Amb", "Ambulatorial"), 300, 180);
+        Beneficiario beneficiario = new Beneficiario("Joao",LocalDate.of(2024,1,1),plano);
+        Procedimento procedimento = new Procedimento("999","Cirurgia qualquer",TipoProcedimento.CONSULTA, true);
+        ContextoAtendimento contextoAtendimento = new ContextoAtendimento(LocalDate.of(2024,8,1), false,false);
+
+        ServicoAutorizacao servico = new ServicoAutorizacao();
+        ResultadoAutorizacao resultado = servico.autorizar(beneficiario, procedimento, contextoAtendimento);
+
+        assertEquals(Decisao.NEGADO_AUTORIZACAO_PREVIA,resultado.getDecisao());
+    }
+
+    @Test
+    void ServicoAutorizacaoConcedido() {
+        Plano plano = new Plano("Unimed", new Ambulatorial("Amb", "Ambulatorial"), 300, 180);
+        Beneficiario beneficiario = new Beneficiario("Joao",LocalDate.of(2024,1,1),plano);
+        Procedimento procedimento = new Procedimento("999","Cirurgia qualquer",TipoProcedimento.CONSULTA, true);
+        ContextoAtendimento contextoAtendimento = new ContextoAtendimento(LocalDate.of(2024,8,1), false,true);
+
+        ServicoAutorizacao servico = new ServicoAutorizacao();
+        ResultadoAutorizacao resultado = servico.autorizar(beneficiario, procedimento, contextoAtendimento);
+
+        assertEquals(Decisao.AUTORIZADO,resultado.getDecisao());
     }
 
 }

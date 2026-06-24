@@ -17,13 +17,17 @@ public class ServicoAutorizacao {
         }
         int dias = beneficiario.diasDecorridos(contextoAtendimento.getDataEvento()); 
         boolean resposta = beneficiario.getPlano().carenciaCumprida(tipo,dias,urgencia);
-        if (resposta) {
-            ResultadoAutorizacao resultado = new ResultadoAutorizacao(Decisao.AUTORIZADO,"Carência cumprida");
-            return resultado;
-        }
-        else {
+        if (!resposta) {
             ResultadoAutorizacao resultado = new ResultadoAutorizacao(Decisao.NEGADO_CARENCIA,"Carência não cumprida");
             return resultado;
         }
+        boolean requerAutorizacaoPrevia = procedimento.isRequerAutorizacaoPrevia();
+        boolean autorizacaoPreviaConcedida = contextoAtendimento.isAutorizacaoPreviaConcedida();
+        if (requerAutorizacaoPrevia && !autorizacaoPreviaConcedida) {
+            ResultadoAutorizacao resultado = new ResultadoAutorizacao(Decisao.NEGADO_AUTORIZACAO_PREVIA,"Autorização prévia não concedida");
+            return resultado;
+        }
+        ResultadoAutorizacao resultado = new ResultadoAutorizacao(Decisao.AUTORIZADO,"Autorizado");
+        return resultado;
     }
 }   
