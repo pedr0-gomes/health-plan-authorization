@@ -1,7 +1,12 @@
 package br.ufca.autorizacao.dominio;
 
 import org.junit.jupiter.api.Test;
+
+import br.ufca.autorizacao.excecao.DadosInvalidosException;
+
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.time.LocalDate;
 
 class PlanoTest {
 
@@ -72,5 +77,14 @@ class PlanoTest {
 
     }
 
+    @Test
+    void carenciaPartoNegativaLancaExcecao() {
+        assertThrows(DadosInvalidosException.class, () -> new Plano("Pedro", new HospitalarComObstetricia("HCO", "Cobre tudo"), new SemCoparticipacao(), -20, 180));
+    }
+
+    @Test
+    void carenciaDemaisNegativaExcecao() {
+        assertThrows(DadosInvalidosException.class, () -> new Plano("Pedro", new HospitalarComObstetricia("HCO", "Cobre tudo"), new SemCoparticipacao(), 300,-20));
+    }
 
 }

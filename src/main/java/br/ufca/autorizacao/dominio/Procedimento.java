@@ -1,5 +1,7 @@
 package br.ufca.autorizacao.dominio;
 
+import br.ufca.autorizacao.excecao.DadosInvalidosException;
+
 public class Procedimento {
     private final String codigo;
     private final String descricao;
@@ -12,6 +14,9 @@ public class Procedimento {
         this.descricao = descricao;
         this.tipo = tipo;
         this.requerAutorizacaoPrevia = requerAutorizacaoPrevia;
+        if (valorBase < 0) {
+            throw new DadosInvalidosException("Valor Base inválido");
+        }
         this.valorBase = valorBase;
     }
 
@@ -25,5 +30,9 @@ public class Procedimento {
 
     public double getValorBase() {
         return this.valorBase;
+    }
+
+    public String getCodigo() {
+        return this.codigo;
     }
 }

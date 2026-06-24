@@ -1,5 +1,7 @@
 package br.ufca.autorizacao.dominio;
 
+import br.ufca.autorizacao.excecao.DadosInvalidosException;
+
 public class Plano {
     private String nome;
     private final Segmentacao segmentacao;
@@ -10,6 +12,12 @@ public class Plano {
     public Plano(String nome,Segmentacao segmentacao,PoliticaCoparticipacao politicaCoparticipacao,int carenciaParto,int carenciaDemais) {
         this.nome = nome;
         this.segmentacao = segmentacao;
+        if (carenciaParto < 0) {
+            throw new DadosInvalidosException("Carência de Parto Inválida");
+        }
+        if (carenciaDemais < 0) {
+            throw new DadosInvalidosException("Carência Demais Inválida");
+        }
         this.carenciaParto = carenciaParto;
         this.carenciaDemais = carenciaDemais;
         this.politicaCoparticipacao = politicaCoparticipacao;
@@ -32,5 +40,9 @@ public class Plano {
 
     public double calcularCopart(Procedimento p) {
         return this.politicaCoparticipacao.calcular(p);
+    }
+
+    public String getNome() {
+        return this.nome;
     }
 }
