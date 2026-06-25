@@ -22,4 +22,10 @@ public class ResultadoAutorizacao {
     public double getValorCoparticipacao() {
         return this.valorCoparticipacao;
     }
+
+    @Override
+    public String toString() {
+        return "Resultado{decisão=" + decisao + ", motivo='" + motivo + "', coparticipação="
+                + String.format(java.util.Locale.of("pt", "BR"), "R$ %.2f", valorCoparticipacao) + "}";
+    }
 }

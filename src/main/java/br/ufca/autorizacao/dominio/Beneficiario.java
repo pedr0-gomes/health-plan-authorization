@@ -31,4 +31,9 @@ public class Beneficiario {
     public String getNome() {
         return this.nome;
     }
+
+    @Override
+    public String toString() {
+        return "Beneficiário{nome='" + nome + "', plano=" + plano +"}";
+    }
 }

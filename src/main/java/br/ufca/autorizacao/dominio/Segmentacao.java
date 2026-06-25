@@ -9,4 +9,10 @@ public abstract class Segmentacao {
         this.descricao = descricao;
     }
     public abstract boolean cobre(Procedimento p);
+
+    @Override
+    public String toString() {
+        return "Segmentação{nome='" + nome + "', descrição=" + descricao + "}";
+
+    }
 }

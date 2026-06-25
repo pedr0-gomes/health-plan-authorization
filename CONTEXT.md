@@ -1,6 +1,6 @@
 # CONTEXT.md — mapa do projeto
 
-Última atualização: 2026-06-16
+Última atualização: 2026-06-25
 
 ## O que é este projeto
 
@@ -46,11 +46,17 @@ ao fechar.
 ## Posição na esteira da Construir
 
 ```
-Idea ✓ → Research ✓ → (Prototype: pulado) → PRD ✓ → Kanban ✓ (PRD §8) → Implementation ⬜ → QA ⬜
+Idea ✓ → Research ✓ → (Prototype: pulado) → PRD ✓ → Kanban ✓ (PRD §8) → Implementation ✓ → QA ✓
 ```
 
-**Próximo passo: a Implementation — Fatia 0 do `PRD §8`** (scaffold Maven: `pom.xml`,
-árvore, JUnit 5). Da Fatia 1 em diante o código é do Pedro (ver `COLABORACAO.md`).
+**Implementation concluída (2026-06-25)** — todas as 7 fatias do `PRD §8` (0–6)
+entregues; 34 testes verdes; sistema roda fim-a-fim pelo menu CLI (`mvn exec:java`):
+semeia cadastros, lista, autoriza (cobertura → carência → AP → coparticipação) e trata
+erros de lookup na borda. QA via testes JUnit acompanhou cada fatia (TDD).
+
+**Próximo passo: Etapa 3** — documentação formal do trabalho (cerimônia do Claude
+a partir do código e do PRD já decididos). A Etapa 2 (modelagem UML + implementação)
+está fechada.
 
 A modelagem UML da Etapa 2 está **completa** (ambos os diagramas em `docs/entrega/`):
 
@@ -61,7 +67,7 @@ A modelagem UML da Etapa 2 está **completa** (ambos os diagramas em `docs/entre
   `docs/entrega/diagrama-de-classes.excalidraw`.
 
 **Gate da Etapa 1** *(aprovado 2026-06-03)*: a proposta foi aprovada pelo professor —
-a Etapa 2 está liberada. Diagramas UML concluídos; próximo é a Fatia 0.
+a Etapa 2 está liberada. Diagramas UML concluídos e implementação (Fatias 0–6) fechada.
 
 ## Interfaces externas (onde o método não chega)
 

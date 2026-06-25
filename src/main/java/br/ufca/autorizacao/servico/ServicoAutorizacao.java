@@ -3,7 +3,6 @@ package br.ufca.autorizacao.servico;
 import br.ufca.autorizacao.dominio.Beneficiario;
 import br.ufca.autorizacao.dominio.ContextoAtendimento;
 import br.ufca.autorizacao.dominio.Decisao;
-import br.ufca.autorizacao.dominio.Plano;
 import br.ufca.autorizacao.dominio.Procedimento;
 import br.ufca.autorizacao.dominio.ResultadoAutorizacao;
 import br.ufca.autorizacao.dominio.TipoProcedimento;

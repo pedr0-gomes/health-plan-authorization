@@ -151,7 +151,7 @@ src/
 │   ├── dominio/        (entidades, enums, segmentações, políticas, exceções)
 │   ├── servico/        (ServicoAutorizacao)
 │   ├── repositorio/    (Repositorio*)
-│   └── apresentacao/   (Main, Menu)
+│   └── apresentacao/   (Main — menu CLI embutido; decidido na Fatia 6 não extrair classe Menu)
 └── test/java/br/ufca/autorizacao/
     └── ...
 ```

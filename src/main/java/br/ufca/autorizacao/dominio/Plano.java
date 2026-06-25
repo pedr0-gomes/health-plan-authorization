@@ -45,4 +45,9 @@ public class Plano {
     public String getNome() {
         return this.nome;
     }
+
+    @Override
+    public String toString() {
+        return "Plano{nome='" + nome + "', segmentação=" + segmentacao+ "}";
+    }
 }
