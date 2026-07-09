@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>relatorio-ed2</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1
+id="relatório-técnico-estudo-dirigido-2-padrões-de-projeto">Relatório
+Técnico — Estudo Dirigido 2: Padrões de Projeto</h1>
+<p><strong>Aluno:</strong> Pedro Gomes Sampaio
+<strong>Disciplina:</strong> Programação Orientada a Objetos
+<strong>Entrega:</strong> 28/07/2026</p>
+<hr />
+<h2 id="cenário-de-referência">Cenário de Referência</h2>
+<p>Os exemplos práticos deste relatório partem do mesmo cenário
+utilizado no Estudo Dirigido 1: a <strong>autorização de procedimentos
+por plano de saúde</strong>.</p>
+<p>O sistema decide, em sequência, se um procedimento solicitado por um
+beneficiário será autorizado ou negado, avaliando cobertura, carência,
+autorização prévia e calculando a coparticipação devida. É sobre a
+estrutura interna desse sistema — as decisões de design que o sustentam
+— que os padrões de projeto abaixo incidem.</p>
+<hr />
+<h2 id="padrões-criacionais">1. Padrões Criacionais</h2>
+<h3 id="conceito">1.1 Conceito</h3>
+<p>Padrões criacionais resolvem um problema recorrente de acoplamento:
+quem usa um objeto não deveria precisar conhecer qual classe concreta
+está sendo instanciada, nem os detalhes de como esse objeto é
+construído. Ao encapsular a lógica de criação, esses padrões permitem
+trocar implementações sem alterar o código que consome o objeto.</p>
+<p><strong>Características gerais:</strong></p>
+<ul>
+<li>Separam a decisão de “qual classe criar” de quem utiliza o
+objeto.</li>
+<li>Controlam o ciclo de vida das instâncias (quantidade, momento de
+criação, descarte).</li>
+<li>Facilitam a substituição de implementações sem impacto nos
+clientes.</li>
+</ul>
+<p><strong>Aplicabilidade:</strong> Use padrões criacionais quando a
+criação de um objeto é complexa, quando o chamador não deve depender de
+uma classe concreta específica, ou quando o sistema precisa garantir
+restrições sobre o número de instâncias existentes.</p>
+<h3 id="padrão-aplicado-singleton">1.2 Padrão Aplicado: Singleton</h3>
+<h4 id="problema">Problema</h4>
+<p>No sistema de autorização, os repositórios
+(<code>RepositorioBeneficiario</code>, <code>RepositorioPlano</code>,
+<code>RepositorioProcedimento</code>) mantêm os dados em memória durante
+a execução. Se duas partes do código instanciassem
+<code>RepositorioBeneficiario</code> independentemente, cada instância
+teria sua própria lista — beneficiários adicionados em uma não
+apareceriam na outra, gerando inconsistência de estado.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Problema: nada impede múltiplas instâncias</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>RepositorioBeneficiario rep1 <span class="op">=</span> <span class="kw">new</span> <span class="fu">RepositorioBeneficiario</span><span class="op">();</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>RepositorioBeneficiario rep2 <span class="op">=</span> <span class="kw">new</span> <span class="fu">RepositorioBeneficiario</span><span class="op">();</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>rep1<span class="op">.</span><span class="fu">adicionar</span><span class="op">(</span><span class="kw">new</span> <span class="fu">Beneficiario</span><span class="op">(</span><span class="st">&quot;Pedro&quot;</span><span class="op">,</span> <span class="kw">...</span><span class="op">));</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>rep2<span class="op">.</span><span class="fu">listar</span><span class="op">();</span> <span class="co">// retorna lista vazia — rep2 não conhece Pedro</span></span></code></pre></div>
+<h4 id="solução">Solução</h4>
+<p>O <strong>Singleton</strong> garante que uma classe possua apenas uma
+instância no sistema e fornece um ponto de acesso global a ela. A classe
+assume o controle da própria criação: o construtor é privado e a
+instância é exposta por um método estático.</p>
+<h4 id="implementação">Implementação</h4>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> RepositorioBeneficiario <span class="op">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// instância única criada na carga da classe (thread-safe sem sincronização)</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">static</span> <span class="dt">final</span> RepositorioBeneficiario INSTANCE <span class="op">=</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>            <span class="kw">new</span> <span class="fu">RepositorioBeneficiario</span><span class="op">();</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">// construtor privado: impede new RepositorioBeneficiario() fora da classe</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="fu">RepositorioBeneficiario</span><span class="op">()</span> <span class="op">{}</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> RepositorioBeneficiario <span class="fu">getInstance</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> INSTANCE<span class="op">;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">// --- mesmos métodos do repositório original ---</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">final</span> <span class="bu">List</span><span class="op">&lt;</span>Beneficiario<span class="op">&gt;</span> list <span class="op">=</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;&gt;();</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">adicionar</span><span class="op">(</span>Beneficiario beneficiario<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        list<span class="op">.</span><span class="fu">add</span><span class="op">(</span>beneficiario<span class="op">);</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">List</span><span class="op">&lt;</span>Beneficiario<span class="op">&gt;</span> <span class="fu">listar</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">Collections</span><span class="op">.</span><span class="fu">unmodifiableList</span><span class="op">(</span>list<span class="op">);</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> Beneficiario <span class="fu">buscar</span><span class="op">(</span><span class="bu">String</span> nome<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span>Beneficiario b <span class="op">:</span> list<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>nome<span class="op">.</span><span class="fu">equals</span><span class="op">(</span>b<span class="op">.</span><span class="fu">getNome</span><span class="op">()))</span> <span class="cf">return</span> b<span class="op">;</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">throw</span> <span class="kw">new</span> <span class="fu">BeneficiarioNaoEncontradoException</span><span class="op">(</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;Beneficiário nomeado por &quot;</span> <span class="op">+</span> nome <span class="op">+</span> <span class="st">&quot; não encontrado&quot;</span><span class="op">);</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Com o Singleton aplicado, qualquer ponto do sistema que precise do
+repositório obtém a mesma instância via
+<code>RepositorioBeneficiario.getInstance()</code>, eliminando a
+possibilidade de inconsistência por duplicação.</p>
+<hr />
+<h2 id="padrões-estruturais">2. Padrões Estruturais</h2>
+<h3 id="conceito-1">2.1 Conceito</h3>
+<p>Padrões estruturais tratam de como objetos e classes são compostos
+para formar estruturas maiores. O mecanismo central é a
+<strong>composição</strong>: montar comportamento novo combinando
+objetos, sem herança e sem modificar o que já existe.</p>
+<p><strong>Características gerais:</strong></p>
+<ul>
+<li>Organizam classes e objetos em estruturas que sejam fáceis de
+estender.</li>
+<li>Usam composição em vez de herança para adicionar
+responsabilidades.</li>
+<li>Permitem que interfaces incompatíveis colaborem, ou que
+comportamentos sejam empilhados de forma transparente ao chamador.</li>
+</ul>
+<p><strong>Aplicabilidade:</strong> Use padrões estruturais quando
+precisar adicionar comportamento a objetos sem alterar sua classe,
+quando interfaces existentes forem incompatíveis entre si, ou quando a
+composição de funcionalidades precisar ser dinâmica e
+intercambiável.</p>
+<h3 id="padrão-aplicado-decorator">2.2 Padrão Aplicado: Decorator</h3>
+<h4 id="problema-1">Problema</h4>
+<p>O <code>ServicoAutorizacao</code> realiza a lógica central de
+decisão. Em determinado momento da evolução do sistema, surge a
+necessidade de registrar em log cada solicitação de autorização — quem
+pediu, qual procedimento e qual foi o resultado. Modificar diretamente
+<code>ServicoAutorizacao</code> viola o princípio de que classes devem
+estar abertas para extensão, mas fechadas para modificação. Além disso,
+criar uma subclasse para cada variação de comportamento adicional (log,
+métricas, auditoria) explode a hierarquia.</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Sem Decorator: modificar ServicoAutorizacao para adicionar log</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> ResultadoAutorizacao <span class="fu">autorizar</span><span class="op">(</span><span class="kw">...</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;[LOG] Solicitação recebida...&quot;</span><span class="op">);</span> <span class="co">// não deveria estar aqui</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">// ... lógica de negócio misturada com infraestrutura</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h4 id="solução-1">Solução</h4>
+<p>O <strong>Decorator</strong> envolve (<em>wraps</em>) um objeto com
+uma camada que adiciona comportamento, sem que o chamador perceba a
+diferença — ambos expõem a mesma interface. Comportamentos podem ser
+empilhados: log em volta de métricas em volta do serviço real.</p>
+<h4 id="implementação-1">Implementação</h4>
+<p><strong>Passo 1 — extrair a interface:</strong></p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">interface</span> IServicoAutorizacao <span class="op">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    ResultadoAutorizacao <span class="fu">autorizar</span><span class="op">(</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>            Beneficiario beneficiario<span class="op">,</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>            Procedimento procedimento<span class="op">,</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>            ContextoAtendimento contexto<span class="op">);</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><strong>Passo 2 — o componente concreto implementa a interface (sem
+alteração da lógica):</strong></p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> ServicoAutorizacao <span class="kw">implements</span> IServicoAutorizacao <span class="op">{</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> ResultadoAutorizacao <span class="fu">autorizar</span><span class="op">(</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>            Beneficiario beneficiario<span class="op">,</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>            Procedimento procedimento<span class="op">,</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>            ContextoAtendimento contexto<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="co">// lógica de negócio inalterada</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(!</span>beneficiario<span class="op">.</span><span class="fu">getPlano</span><span class="op">().</span><span class="fu">cobre</span><span class="op">(</span>procedimento<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="kw">new</span> <span class="fu">ResultadoAutorizacao</span><span class="op">(</span>Decisao<span class="op">.</span><span class="fu">NEGADO_COBERTURA</span><span class="op">,</span> <span class="st">&quot;Plano não cobre&quot;</span><span class="op">);</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="co">// ... demais verificações</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">new</span> <span class="fu">ResultadoAutorizacao</span><span class="op">(</span>Decisao<span class="op">.</span><span class="fu">AUTORIZADO</span><span class="op">,</span> <span class="st">&quot;Autorizado&quot;</span><span class="op">,</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                beneficiario<span class="op">.</span><span class="fu">getPlano</span><span class="op">().</span><span class="fu">calcularCopart</span><span class="op">(</span>procedimento<span class="op">));</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><strong>Passo 3 — o Decorator envolve qualquer
+<code>IServicoAutorizacao</code>:</strong></p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> ServicoAutorizacaoComLog <span class="kw">implements</span> IServicoAutorizacao <span class="op">{</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">final</span> IServicoAutorizacao delegado<span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">ServicoAutorizacaoComLog</span><span class="op">(</span>IServicoAutorizacao delegado<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">delegado</span> <span class="op">=</span> delegado<span class="op">;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> ResultadoAutorizacao <span class="fu">autorizar</span><span class="op">(</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>            Beneficiario beneficiario<span class="op">,</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>            Procedimento procedimento<span class="op">,</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>            ContextoAtendimento contexto<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">printf</span><span class="op">(</span><span class="st">&quot;[LOG] Solicitação: beneficiário=</span><span class="sc">%s</span><span class="st">, procedimento=</span><span class="sc">%s%n</span><span class="st">&quot;</span><span class="op">,</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>                beneficiario<span class="op">.</span><span class="fu">getNome</span><span class="op">(),</span> procedimento<span class="op">.</span><span class="fu">getCodigo</span><span class="op">());</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        ResultadoAutorizacao resultado <span class="op">=</span> delegado<span class="op">.</span><span class="fu">autorizar</span><span class="op">(</span>beneficiario<span class="op">,</span> procedimento<span class="op">,</span> contexto<span class="op">);</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">printf</span><span class="op">(</span><span class="st">&quot;[LOG] Resultado: </span><span class="sc">%s</span><span class="st"> — </span><span class="sc">%s%n</span><span class="st">&quot;</span><span class="op">,</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>                resultado<span class="op">.</span><span class="fu">getDecisao</span><span class="op">(),</span> resultado<span class="op">.</span><span class="fu">getMensagem</span><span class="op">());</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> resultado<span class="op">;</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><strong>Uso no ponto de composição (Main):</strong></p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>IServicoAutorizacao servico <span class="op">=</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>        <span class="kw">new</span> <span class="fu">ServicoAutorizacaoComLog</span><span class="op">(</span><span class="kw">new</span> <span class="fu">ServicoAutorizacao</span><span class="op">());</span></span></code></pre></div>
+<p>O chamador recebe um <code>IServicoAutorizacao</code> e chama
+<code>.autorizar()</code> normalmente. A camada de log é invisível para
+ele; pode ser removida ou substituída por outra decoração sem alterar
+nenhuma outra classe.</p>
+<hr />
+<h2 id="padrões-comportamentais">3. Padrões Comportamentais</h2>
+<h3 id="conceito-2">3.1 Conceito</h3>
+<p>Padrões comportamentais tratam de como objetos distribuem
+responsabilidades e colaboram para cumprir o propósito do sistema. O
+foco está em <strong>quem faz o quê</strong> e em como variações de
+comportamento podem ser encapsuladas de forma intercambiável, sem que o
+chamador precise conhecer os detalhes de cada variante.</p>
+<p><strong>Características gerais:</strong></p>
+<ul>
+<li>Encapsulam algoritmos ou comportamentos que variam, isolando-os do
+código que os usa.</li>
+<li>Definem protocolos de comunicação entre objetos de forma que o
+acoplamento seja mínimo.</li>
+<li>Permitem trocar comportamentos em tempo de execução sem alterar os
+clientes.</li>
+</ul>
+<p><strong>Aplicabilidade:</strong> Use padrões comportamentais quando
+um comportamento precisa variar independentemente de quem o usa, quando
+o sistema precisa selecionar entre algoritmos em tempo de execução, ou
+quando a responsabilidade por uma decisão deve estar concentrada em um
+objeto especializado.</p>
+<h3 id="padrão-aplicado-strategy">3.2 Padrão Aplicado: Strategy</h3>
+<h4 id="problema-2">Problema</h4>
+<p>Planos de saúde podem adotar políticas de coparticipação distintas:
+percentual sobre o valor do procedimento, valor fixo por tipo de
+procedimento ou isenção total. Se a lógica de cálculo ficasse dentro de
+<code>Plano</code> com <code>if/else</code> ou <code>switch</code>,
+qualquer novo tipo de política exigiria modificar a classe — e o cálculo
+correto para cada caso ficaria espalhado e difícil de testar
+isoladamente.</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Sem Strategy: lógica de cálculo dentro de Plano</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">double</span> <span class="fu">calcularCopart</span><span class="op">(</span>Procedimento p<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>tipoPolitica<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">&quot;percentual&quot;</span><span class="op">))</span> <span class="op">{</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> p<span class="op">.</span><span class="fu">getValorBase</span><span class="op">()</span> <span class="op">*</span> percentual<span class="op">;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>tipoPolitica<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">&quot;fixo&quot;</span><span class="op">))</span> <span class="op">{</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> tabelaFixa<span class="op">.</span><span class="fu">get</span><span class="op">(</span>p<span class="op">.</span><span class="fu">getTipo</span><span class="op">());</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fl">0.0</span><span class="op">;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h4 id="solução-2">Solução</h4>
+<p>O <strong>Strategy</strong> define uma família de algoritmos,
+encapsula cada um em um objeto separado e os torna intercambiáveis.
+<code>Plano</code> delega o cálculo para a política que recebeu — e não
+sabe, nem precisa saber, qual variante está em uso.</p>
+<h4 id="implementação-2">Implementação</h4>
+<p><strong>A interface Strategy:</strong></p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">interface</span> PoliticaCoparticipacao <span class="op">{</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> <span class="fu">calcular</span><span class="op">(</span>Procedimento p<span class="op">);</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><strong>Estratégias concretas:</strong></p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Política percentual: cobra percentual do valor base</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> CoparticipacaoPercentual <span class="kw">implements</span> PoliticaCoparticipacao <span class="op">{</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">final</span> <span class="dt">double</span> percentual<span class="op">;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">CoparticipacaoPercentual</span><span class="op">(</span><span class="dt">double</span> percentual<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">percentual</span> <span class="op">=</span> percentual<span class="op">;</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">double</span> <span class="fu">calcular</span><span class="op">(</span>Procedimento p<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> p<span class="op">.</span><span class="fu">getValorBase</span><span class="op">()</span> <span class="op">*</span> percentual<span class="op">;</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">// Política isenta: sem cobrança</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> SemCoparticipacao <span class="kw">implements</span> PoliticaCoparticipacao <span class="op">{</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">double</span> <span class="fu">calcular</span><span class="op">(</span>Procedimento p<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fl">0.0</span><span class="op">;</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="co">// Política por tipo: valor fixo conforme categoria do procedimento</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> CoparticipacaoFixaPorTipo <span class="kw">implements</span> PoliticaCoparticipacao <span class="op">{</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">final</span> <span class="bu">Map</span><span class="op">&lt;</span>TipoProcedimento<span class="op">,</span> <span class="bu">Double</span><span class="op">&gt;</span> tabela<span class="op">;</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">CoparticipacaoFixaPorTipo</span><span class="op">(</span><span class="bu">Map</span><span class="op">&lt;</span>TipoProcedimento<span class="op">,</span> <span class="bu">Double</span><span class="op">&gt;</span> tabela<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">tabela</span> <span class="op">=</span> tabela<span class="op">;</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">double</span> <span class="fu">calcular</span><span class="op">(</span>Procedimento p<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> tabela<span class="op">.</span><span class="fu">getOrDefault</span><span class="op">(</span>p<span class="op">.</span><span class="fu">getTipo</span><span class="op">(),</span> <span class="fl">0.0</span><span class="op">);</span></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><strong>O contexto (<code>Plano</code>) delega para a
+política:</strong></p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Plano <span class="op">{</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">final</span> PoliticaCoparticipacao politica<span class="op">;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// ...</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">double</span> <span class="fu">calcularCopart</span><span class="op">(</span>Procedimento p<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> politica<span class="op">.</span><span class="fu">calcular</span><span class="op">(</span>p<span class="op">);</span> <span class="co">// não sabe qual Strategy está aqui</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p><strong>Composição no ponto de criação:</strong></p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Plano ambulatorial: sem coparticipação</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>Plano planoAmbulatorial <span class="op">=</span> <span class="kw">new</span> <span class="fu">Plano</span><span class="op">(</span><span class="st">&quot;Unimed Ambulatorial&quot;</span><span class="op">,</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">new</span> <span class="fu">Ambulatorial</span><span class="op">(</span><span class="kw">...</span><span class="op">),</span> <span class="kw">new</span> <span class="fu">SemCoparticipacao</span><span class="op">(),</span> <span class="dv">300</span><span class="op">,</span> <span class="dv">180</span><span class="op">);</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">// Plano hospitalar: 20% sobre o valor base</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>Plano planoHospitalar <span class="op">=</span> <span class="kw">new</span> <span class="fu">Plano</span><span class="op">(</span><span class="st">&quot;Unimed Hospitalar Plus&quot;</span><span class="op">,</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">new</span> <span class="fu">HospitalarComObstetricia</span><span class="op">(</span><span class="kw">...</span><span class="op">),</span> <span class="kw">new</span> <span class="fu">CoparticipacaoPercentual</span><span class="op">(</span><span class="fl">0.2</span><span class="op">),</span> <span class="dv">300</span><span class="op">,</span> <span class="dv">180</span><span class="op">);</span></span></code></pre></div>
+<p>A política pode ser trocada sem alterar <code>Plano</code>,
+<code>ServicoAutorizacao</code> ou qualquer outro componente. Adicionar
+uma quarta política exige apenas uma nova classe que implemente
+<code>PoliticaCoparticipacao</code>.</p>
+<hr />
+<h2 id="referências">Referências</h2>
+<p>GAMMA, E. et al. <em>Padrões de Projeto: Soluções Reutilizáveis de
+Software Orientado a Objetos</em>. Porto Alegre: Bookman, 2000.</p>
+<p>Refactoring.Guru. <em>Design Patterns</em>. Disponível em: <a
+href="https://refactoring.guru/pt-br/design-patterns"
+class="uri">https://refactoring.guru/pt-br/design-patterns</a>. Acesso
+em: jul. 2026.</p>
+</body>
+</html>

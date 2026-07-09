@@ -54,9 +54,24 @@ entregues; 34 testes verdes; sistema roda fim-a-fim pelo menu CLI (`mvn exec:jav
 semeia cadastros, lista, autoriza (cobertura → carência → AP → coparticipação) e trata
 erros de lookup na borda. QA via testes JUnit acompanhou cada fatia (TDD).
 
-**Próximo passo: Etapa 3** — documentação formal do trabalho (cerimônia do Claude
-a partir do código e do PRD já decididos). A Etapa 2 (modelagem UML + implementação)
-está fechada.
+**▶ Retomar — Estudos Dirigidos (prioridade até 28/07/26)**
+
+| ED | Conteúdo | Pasta de trabalho | Status |
+|---|---|---|---|
+| ED1 — UML | Casos de Uso + Diagrama de Classes | `docs/entrega/ed1-uml/` | ✅ concluído (2026-07-09) — `relatorio-ed1.pdf` gerado |
+| ED2 — Design Patterns | Criacional + Estrutural + Comportamental | `docs/entrega/ed2-design-patterns/` | ✅ concluído (2026-07-09) — `relatorio-ed2.pdf` gerado |
+
+Cadência planejada (2026-07-09):
+- **Sessão A** — ED1 completo ✅
+- **Sessão B** — Aprender: Design Patterns (3 grupos) ✅ concluído (2026-07-09)
+- **Sessão C** — ED2 completo: andaime montado pelo Claude, Pedro ajusta
+
+Padrões escolhidos para o ED2 (decidido Sessão B):
+- Criacional → **Singleton** (âncora: `BeneficiarioRepository`)
+- Estrutural → **Decorator** (âncora: `AutorizacaoService` + log)
+- Comportamental → **Strategy** (já implementado: `CoparticipacaoPolicy`)
+
+Paralelo: durante B/C emergem ideias para posts (Strategy → candidato ao Post #3 do Expor).
 
 A modelagem UML da Etapa 2 está **completa** (ambos os diagramas em `docs/entrega/`):
 
@@ -104,3 +119,13 @@ candidato a categoria nova no método.
   hardcoded — **mesma classe de fix transversal da `to-prd`** (skill assume caminho de
   raiz; o projeto sobrescreve o destino). Resolver no sistema global, não aqui.
 - **`docs/adr/`** — convenção de ADR por-projeto prevista no método; ainda não usada.
+
+<!-- retomar:auto:start -->
+## ▶ Retomar
+EDs concluídos. Próxima sessão: destilar ou retomar Expor (Post #2 exceções, Post #3 Strategy).
+
+- **Sessão (2026-07-09, Sessões B+C):** Design Patterns aprendidos (B) e ED2 fechado (C) — relatório gerado em `docs/entrega/ed2-design-patterns/relatorio-ed2.pdf`.
+- **Padrões do ED2:** Singleton (`RepositorioBeneficiario`), Decorator (`ServicoAutorizacaoComLog`), Strategy (`PoliticaCoparticipacao`, já implementado).
+- **Arquivos quentes:** `docs/entrega/ed2-design-patterns/relatorio-ed2.pdf` — artefato final do ED2; `docs/aprendizado/design-patterns-tres-grupos.md` — nota-sombra da Sessão B.
+- **Fila de destilação (aplicar com Pedro):** vazia
+<!-- retomar:auto:end -->

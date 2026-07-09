@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>relatorio-ed1</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<h1 id="relatório-técnico-estudo-dirigido-1-uml">Relatório Técnico —
+Estudo Dirigido 1: UML</h1>
+<p><strong>Aluno:</strong> Pedro Gomes Sampaio
+<strong>Disciplina:</strong> Programação Orientada a Objetos
+<strong>Entrega:</strong> 28/07/2026</p>
+<hr />
+<h2 id="cenário-de-referência">Cenário de Referência</h2>
+<p>Os exemplos práticos deste relatório partem de um cenário do setor de
+saúde suplementar: a <strong>autorização de procedimentos por plano de
+saúde</strong>.</p>
+<p>Quando um beneficiário — pessoa coberta por um plano — precisa
+realizar um procedimento médico (consulta, exame, cirurgia, internação
+ou parto), a operadora precisa decidir se aquele procedimento será
+<strong>autorizado ou negado</strong>. Essa decisão não é arbitrária:
+segue um conjunto de regras contratuais e regulatórias avaliadas em
+sequência.</p>
+<ol type="1">
+<li><strong>Cobertura</strong> — o plano contratado pelo beneficiário
+inclui aquele tipo de procedimento?</li>
+<li><strong>Carência</strong> — o beneficiário já cumpriu o tempo mínimo
+de adesão exigido para aquela categoria de procedimento?</li>
+<li><strong>Autorização prévia</strong> — o procedimento exige aprovação
+antecipada da operadora? Em caso afirmativo, ela foi concedida?</li>
+<li><strong>Coparticipação</strong> — há valor a ser pago pelo próprio
+beneficiário? Qual o montante, conforme a política do plano?</li>
+</ol>
+<p>O resultado é sempre uma decisão (autorizado ou negado) acompanhada
+de um motivo claro e, quando autorizado, do valor de coparticipação
+devido.</p>
+<p>É esse cenário que os diagramas a seguir modelam — primeiro pelo
+ângulo do comportamento esperado (casos de uso), depois pelo ângulo da
+estrutura que sustenta esse comportamento (classes).</p>
+<hr />
+<h2 id="diagrama-de-casos-de-uso">1. Diagrama de Casos de Uso</h2>
+<h3 id="fundamentação-conceitual">1.1 Fundamentação Conceitual</h3>
+<p><strong>Conceito</strong></p>
+<p>O Diagrama de Casos de Uso é um diagrama comportamental da UML que
+descreve as interações entre agentes externos — chamados de
+<em>atores</em> — e um sistema, por meio de funcionalidades observáveis
+chamadas <em>casos de uso</em>. O foco está no <strong>comportamento
+externo do sistema</strong>: o que ele faz, não como o faz. Cada caso de
+uso representa uma funcionalidade completa que entrega valor a pelo
+menos um ator.</p>
+<p>Os elementos principais são:</p>
+<ul>
+<li><strong>Ator</strong> — entidade externa que interage com o sistema
+(pessoa, sistema externo, dispositivo). Representado por um boneco
+palito.</li>
+<li><strong>Caso de uso</strong> — funcionalidade que o sistema oferece
+a um ator. Representado por uma elipse com um nome que começa com
+verbo.</li>
+<li><strong>Sistema</strong> — delimitado por um retângulo; os casos de
+uso ficam dentro, os atores fora.</li>
+<li><strong>Relacionamentos</strong> — <em>associação</em> (ator usa
+caso de uso), <code>&lt;&lt;include&gt;&gt;</code> (caso de uso sempre
+inclui outro), <code>&lt;&lt;extend&gt;&gt;</code> (caso de uso
+opcionalmente estende outro) e <em>generalização</em> (ator ou caso de
+uso herda de outro).</li>
+</ul>
+<p><strong>Propósito</strong></p>
+<p>O diagrama serve para capturar requisitos funcionais de alto nível e
+comunicá-los a diferentes públicos — clientes, analistas e
+desenvolvedores. É o ponto de partida do levantamento de requisitos:
+antes de decidir como o sistema será construído, define-se o que ele
+deve fazer e para quem.</p>
+<p><strong>Aplicabilidade</strong></p>
+<p>É aplicado principalmente nas fases iniciais de análise e
+modelagem:</p>
+<ul>
+<li>Levantamento e validação de requisitos com o cliente (linguagem
+acessível a não-técnicos);</li>
+<li>Definição do escopo do sistema (o que está dentro e fora do
+retângulo);</li>
+<li>Insumo para diagramas de sequência e de atividades que detalham cada
+fluxo;</li>
+<li>Documentação de referência para rastreabilidade de requisitos.</li>
+</ul>
+<p><strong>Vantagens</strong></p>
+<ul>
+<li>Notação simples, legível por usuários não-técnicos.</li>
+<li>Centraliza o olhar no valor entregue ao ator, não nos detalhes
+internos.</li>
+<li>Facilita a descoberta de funcionalidades esquecidas ao perguntar:
+“quem mais usa isto?” e “o que mais este ator precisa?”.</li>
+<li>Delimita o escopo de forma visual, reduzindo ambiguidade sobre o que
+o sistema cobre.</li>
+</ul>
+<p><strong>Desvantagens</strong></p>
+<ul>
+<li>Não descreve fluxo, sequência nem lógica interna — apenas o quê,
+nunca o como.</li>
+<li>As relações <code>&lt;&lt;include&gt;&gt;</code> e
+<code>&lt;&lt;extend&gt;&gt;</code> são frequentemente mal empregadas,
+gerando modelos confusos.</li>
+<li>Em sistemas grandes, o diagrama pode crescer até perder legibilidade
+se não for particionado por pacotes ou subsistemas.</li>
+<li>Não captura requisitos não-funcionais (desempenho, segurança,
+disponibilidade).</li>
+</ul>
+<hr />
+<h3 id="exemplo-de-cenário-de-uso">1.2 Exemplo de Cenário de Uso</h3>
+<p>O diagrama a seguir modela o cenário de autorização de procedimentos
+na perspectiva comportamental — o que o sistema deve fazer e para
+quem.</p>
+<p><img src="caso-de-uso.png" alt="Diagrama de Casos de Uso" />
+<!-- Exportar docs/entrega/caso-de-uso.excalidraw como PNG e salvar aqui --></p>
+<p><strong>Elementos identificados:</strong></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Elemento</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Usuário</td>
+<td>Ator</td>
+<td>Operador do sistema (recepcionista, profissional de saúde)</td>
+</tr>
+<tr class="even">
+<td>F1 — Listar planos</td>
+<td>Caso de uso</td>
+<td>Consulta os planos cadastrados</td>
+</tr>
+<tr class="odd">
+<td>F2 — Listar beneficiários</td>
+<td>Caso de uso</td>
+<td>Consulta os beneficiários cadastrados</td>
+</tr>
+<tr class="even">
+<td>F3 — Listar procedimentos</td>
+<td>Caso de uso</td>
+<td>Consulta os procedimentos disponíveis</td>
+</tr>
+<tr class="odd">
+<td>F4 — Solicitar autorização</td>
+<td>Caso de uso</td>
+<td>Inicia o fluxo de autorização de um procedimento</td>
+</tr>
+<tr class="even">
+<td>F5 — Apresentar resultado</td>
+<td>Caso de uso</td>
+<td>Exibe a decisão (autorizado/negado) e o motivo</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;&lt;include&gt;&gt;</code></td>
+<td>Relacionamento</td>
+<td>F4 sempre inclui F5: toda solicitação produz um resultado
+apresentado</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Leitura do modelo:</strong> o único ator é o Usuário, que
+interage diretamente com as cinco funcionalidades do sistema. A relação
+<code>&lt;&lt;include&gt;&gt;</code> entre F4 e F5 explicita que F5 não
+é um caso de uso independente — ele é parte obrigatória do fluxo de
+autorização. O sistema está delimitado pelo retângulo, deixando claro
+que entidades externas como seguradoras ou prontuários eletrônicos estão
+fora do escopo.</p>
+<hr />
+<h2 id="diagrama-de-classes">2. Diagrama de Classes</h2>
+<h3 id="fundamentação-conceitual-1">2.1 Fundamentação Conceitual</h3>
+<p><strong>Conceito</strong></p>
+<p>O Diagrama de Classes é o diagrama estrutural mais utilizado da UML.
+Representa as <strong>classes</strong> de um sistema orientado a objetos
+— seus atributos, métodos e os relacionamentos entre elas — capturando a
+estrutura estática do modelo. Cada classe aparece como um retângulo
+dividido em três compartimentos: nome, atributos e operações.</p>
+<p>Os relacionamentos principais são:</p>
+<ul>
+<li><strong>Associação</strong> — uma classe conhece a outra (linha
+cheia sem ponta especial). Pode ter multiplicidade (<code>1</code>,
+<code>*</code>, <code>1..*</code>, etc.).</li>
+<li><strong>Agregação</strong> — associação “todo–parte” onde a parte
+pode existir sem o todo (losango vazio no lado do todo).</li>
+<li><strong>Composição</strong> — agregação forte: a parte não existe
+sem o todo (losango cheio).</li>
+<li><strong>Herança (generalização)</strong> — subclasse especializa
+superclasse (triângulo vazado, linha cheia).</li>
+<li><strong>Realização</strong> — classe concreta implementa interface
+(triângulo vazado, linha tracejada).</li>
+<li><strong>Dependência</strong> — uma classe usa outra apenas
+pontualmente, normalmente via parâmetro (seta tracejada aberta).</li>
+</ul>
+<p>Outros elementos notáveis: <code>«interface»</code>,
+<code>«abstract»</code>, <code>«enumeration»</code> e estereótipos
+personalizados como <code>«service»</code>.</p>
+<p><strong>Propósito</strong></p>
+<p>Modelar a estrutura interna do sistema para servir de
+<em>blueprint</em>(modelo) para a implementação. Enquanto o diagrama de
+casos de uso responde ao “o quê”, o diagrama de classes começa a
+responder ao “como”: quais entidades existem, que dados carregam e como
+se relacionam.</p>
+<p><strong>Aplicabilidade</strong></p>
+<ul>
+<li>Design orientado a objetos: organizar responsabilidades entre
+classes e identificar padrões de projeto aplicáveis.</li>
+<li>Comunicação entre desenvolvedores: visão compartilhada da estrutura
+antes de codificar.</li>
+<li>Documentação arquitetural de referência, útil para novos membros da
+equipe.</li>
+<li>Base para geração automática de código (engenharia avante) ou
+extração de modelo a partir de código existente (engenharia
+reversa).</li>
+</ul>
+<p><strong>Vantagens</strong></p>
+<ul>
+<li>Mapeamento direto para código: atributos viram campos, operações
+viram métodos, relacionamentos viram referências.</li>
+<li>Expressa múltiplos tipos de relacionamento com semânticas distintas,
+tornando explícitas dependências e hierarquias.</li>
+<li>Permite identificar violações de princípios (como acoplamento
+excessivo) antes de codificar.</li>
+<li>Suporta diferentes níveis de abstração: modelo conceitual (domínio),
+especificação (interfaces) e implementação (código).</li>
+</ul>
+<p><strong>Desvantagens</strong></p>
+<ul>
+<li>Em sistemas grandes, o diagrama se torna denso e difícil de ler sem
+particionamento cuidadoso.</li>
+<li>Detalhes de implementação (tipos de campos, assinaturas completas)
+podem sujar o modelo se incluídos prematuramente.</li>
+<li>É um modelo estático: não captura fluxo de controle, sequência de
+chamadas ou comportamento temporal.</li>
+<li>Requer atualização contínua — diverge rapidamente do código se não
+for mantido.</li>
+</ul>
+<hr />
+<h3 id="exemplo-de-cenário-de-uso-1">2.2 Exemplo de Cenário de Uso</h3>
+<p>O diagrama abaixo modela o mesmo cenário na perspectiva estrutural —
+quais entidades existem, quais informações carregam e como se
+relacionam.</p>
+<p><img src="diagrama-de-classes.png" alt="Diagrama de Classes" />
+<!-- Exportar docs/entrega/diagrama-de-classes.excalidraw como PNG e salvar aqui --></p>
+<p><strong>Estrutura do modelo:</strong></p>
+<p>O sistema é organizado em quatro grupos de responsabilidade:</p>
+<p><strong>Domínio central</strong></p>
+<p><code>Beneficiario</code> agrega <code>Plano</code> (1:1): um
+beneficiário pertence a um plano, mas o plano existe independentemente.
+<code>Plano</code> agrega <code>Procedimento</code> indiretamente via
+<code>ContextoAtendimento</code>, passado como parâmetro na operação de
+autorização. <code>Plano</code> também agrega <code>Segmentacao</code>
+(1:1) e <code>PoliticaCoparticipacao</code> (1:1).</p>
+<p><strong>Serviço de autorização</strong></p>
+<p><code>ServicoAutorizacao</code> depende de <code>Beneficiario</code>,
+<code>Procedimento</code> e <code>ContextoAtendimento</code> por
+parâmetro (dependência, não associação). Ele produz um
+<code>ResultadoAutorizacao</code>, que encapsula a <code>Decisao</code>
+(enum) e o valor de coparticipação calculado.</p>
+<p><strong>Padrão Strategy — cobertura e coparticipação</strong></p>
+<p><code>Segmentacao</code> é uma classe abstrata com quatro
+especializações concretas (<code>Ambulatorial</code>,
+<code>HospitalarSemObstetricia</code>,
+<code>HospitalarComObstetricia</code>, <code>Referencia</code>), cada
+uma implementando <code>cobre(p): boolean</code> de forma diferente. O
+polimorfismo elimina condicionais do serviço.</p>
+<p><code>PoliticaCoparticipacao</code> é uma interface realizada por
+três classes concretas: <code>SemCoparticipacao</code>,
+<code>CoparticipacaoPercentual</code> e
+<code>CoparticipacaoFixaPorTipo</code>. O <code>Plano</code> delega o
+cálculo para a política atribuída — mesma mecânica do Strategy.</p>
+<p><strong>Repositórios e exceções</strong></p>
+<p>Três repositórios (<code>RepositorioBeneficiario</code>,
+<code>RepositorioPlano</code>, <code>RepositorioProcedimento</code>)
+encapsulam a coleção em memória e expõem operações de adição, listagem e
+busca. Quatro exceções de domínio herdam de
+<code>RuntimeException</code>: <code>DadosInvalidosException</code>,
+<code>BeneficiarioNaoEncontradoException</code>,
+<code>ProcedimentoNaoEncontradoException</code> e
+<code>PlanoNaoEncontradoException</code> — lançadas na borda do sistema
+quando um recurso não é encontrado.</p>
+<p><strong>Decisões de relacionamento relevantes</strong></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Relacionamento</th>
+<th>Tipo escolhido</th>
+<th>Justificativa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Plano</code> → <code>Segmentacao</code></td>
+<td>Agregação</td>
+<td>Segmentação existe independentemente do plano</td>
+</tr>
+<tr class="even">
+<td><code>Plano</code> → <code>PoliticaCoparticipacao</code></td>
+<td>Agregação</td>
+<td>Política é intercambiável; não é parte exclusiva</td>
+</tr>
+<tr class="odd">
+<td><code>ServicoAutorizacao</code> → entidades</td>
+<td>Dependência</td>
+<td>Usa apenas via parâmetro, sem referência permanente</td>
+</tr>
+<tr class="even">
+<td><code>Segmentacao</code> → subclasses</td>
+<td>Herança</td>
+<td>Especialização de comportamento (Strategy via herança)</td>
+</tr>
+<tr class="odd">
+<td><code>PoliticaCoparticipacao</code> → implementações</td>
+<td>Realização</td>
+<td>Interface com múltiplas implementações intercambiáveis</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
