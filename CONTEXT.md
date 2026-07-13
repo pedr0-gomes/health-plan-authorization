@@ -122,10 +122,9 @@ candidato a categoria nova no método.
 
 <!-- retomar:auto:start -->
 ## ▶ Retomar
-EDs concluídos. Próxima sessão: destilar ou retomar Expor (Post #2 exceções, Post #3 Strategy).
+Projeto encerrado. Todos os ciclos cumpridos: modelagem, implementação, EDs, Expor.
 
-- **Sessão (2026-07-09, Sessões B+C):** Design Patterns aprendidos (B) e ED2 fechado (C) — relatório gerado em `docs/entrega/ed2-design-patterns/relatorio-ed2.pdf`.
-- **Padrões do ED2:** Singleton (`RepositorioBeneficiario`), Decorator (`ServicoAutorizacaoComLog`), Strategy (`PoliticaCoparticipacao`, já implementado).
-- **Arquivos quentes:** `docs/entrega/ed2-design-patterns/relatorio-ed2.pdf` — artefato final do ED2; `docs/aprendizado/design-patterns-tres-grupos.md` — nota-sombra da Sessão B.
-- **Fila de destilação (aplicar com Pedro):** vazia
+- **Sessão (2026-07-13, encerramento):** Post #4 (abstrata vs. interface) — bordas fechadas no Notion (título, convite ao repo, mecânica corrigida). Pendente: Pedro preenche URL do Post #1 no Notion → publicar. Posts #2, #3 e #5 não serão escritos deste projeto (limite como fonte de posts atingido). README criado para repo público.
+- **Decisões da sessão:** encerramento do projeto como fonte de posts; repo vai a público sustentando os posts.
+- **Fila de destilação:** vazia
 <!-- retomar:auto:end -->
