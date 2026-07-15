@@ -1,2 +1,5 @@
 target/
 *.class
+
+# Handoff automático de sessão (transitório, regenera todo SessionEnd)
+.retomar-auto

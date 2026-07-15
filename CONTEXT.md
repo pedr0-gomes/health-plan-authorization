@@ -120,11 +120,3 @@ candidato a categoria nova no método.
   raiz; o projeto sobrescreve o destino). Resolver no sistema global, não aqui.
 - **`docs/adr/`** — convenção de ADR por-projeto prevista no método; ainda não usada.
 
-<!-- retomar:auto:start -->
-## ▶ Retomar
-Projeto encerrado. Todos os ciclos cumpridos: modelagem, implementação, EDs, Expor.
-
-- **Sessão (2026-07-13, encerramento):** Post #4 (abstrata vs. interface) — bordas fechadas no Notion (título, convite ao repo, mecânica corrigida). Pendente: Pedro preenche URL do Post #1 no Notion → publicar. Posts #2, #3 e #5 não serão escritos deste projeto (limite como fonte de posts atingido). README criado para repo público.
-- **Decisões da sessão:** encerramento do projeto como fonte de posts; repo vai a público sustentando os posts.
-- **Fila de destilação:** vazia
-<!-- retomar:auto:end -->
