@@ -33,5 +33,5 @@ mvn test
 
 Série publicada a partir deste projeto:
 
-- [Parei de ver objeto como struct](URL_POST_1) — a virada de procedural para OO na prática
-- [A classe abstrata não é a peça principal — é a exceção cara](URL_POST_4) — método abstrato, polimorfismo e o discriminador abstrata vs. interface
+- [Parei de ver objeto como struct](https://exloobiblog.blogspot.com/2026/07/parei-de-ver-objeto-como-struct.html) — a virada de procedural para OO na prática
+- [A classe abstrata não é a peça principal — é a exceção cara](https://exloobiblog.blogspot.com/2026/07/a-classe-abstrata-nao-e-peca-principal.html) — método abstrato, polimorfismo e o discriminador abstrata vs. interface
