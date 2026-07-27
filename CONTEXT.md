@@ -54,6 +54,8 @@ entregues; 34 testes verdes; sistema roda fim-a-fim pelo menu CLI (`mvn exec:jav
 semeia cadastros, lista, autoriza (cobertura → carência → AP → coparticipação) e trata
 erros de lookup na borda. QA via testes JUnit acompanhou cada fatia (TDD).
 
+**✅ PROJETO CONCLUÍDO (2026-07-21)** — EDs entregues, repo público em produção, posts #1 e #4 no ar no Blogger. Nada pendente.
+
 **▶ Retomar — Estudos Dirigidos (prioridade até 28/07/26)**
 
 | ED | Conteúdo | Pasta de trabalho | Status |
